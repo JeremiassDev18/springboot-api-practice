@@ -8,12 +8,14 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Configuration
 public class WebClientConfig {
 
+    @Value("${weather.api.baseurl:https://api.openweathermap.org/data/2.5}")
+    private String baseUrl;
 
     @Bean
-    public WebClient webClient(){
-     return WebClient.builder()
-             .baseUrl("https://api.openweathermap.org/data/2.5")
-             .defaultHeader("Accept", "application/json")
-             .build();
- }
+    public WebClient webClient() {
+        return WebClient.builder()
+                .baseUrl(baseUrl)
+                .defaultHeader("Accept", "application/json")
+                .build();
+    }
 }

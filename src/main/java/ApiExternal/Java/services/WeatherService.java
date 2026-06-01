@@ -3,6 +3,7 @@ package ApiExternal.Java.services;
 import ApiExternal.Java.models.WeatherResponse;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -12,7 +13,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class WeatherService {
     private final WebClient webClient;
 
-    @org.springframework.beans.factory.annotation.Value("${weather.api.key}")
+    @Value("${weather.api.key}")
     private String apiKey;
 
     public WeatherResponse getWeather(String city) {
